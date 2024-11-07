@@ -3,7 +3,7 @@ const data = [
 		name: "Personal Portfolio",
 		src: "/images/portfolio/portfolio.png",
 		desc: "website to showcase my skills. created using React js and Tailwind css",
-		github: "https://github.com/afrizaldwi/afrizaldwi.github.io",
+		github: "https://github.com/afrizaldwi/personal-portfolio",
 		link: "https://afrizaldwi.github.io",
 	},
 	{
