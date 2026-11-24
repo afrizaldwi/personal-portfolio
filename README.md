@@ -16,20 +16,20 @@ npm run lint
 
 In PowerShell, use `npm.cmd` for these commands.
 
-## Production build and static hosting
+## GitHub Pages deployment
 
-```sh
-npm run build
-npm run preview
-```
+The deployment target is [afrizaldwi.github.io/personal-portfolio/](https://afrizaldwi.github.io/personal-portfolio/). In the repository's **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**.
 
-Publish the contents of `dist/` to a static host. The build emits directory index files for `/portfolio`, `/certificate` and every project slug. Serve directory indexes for direct links and refresh, and configure the host to use the generated `404.html` for unknown paths. Some hosts add a trailing slash on directory URLs. The router accepts either form. For a project hosted in a subdirectory, set the matching Vite base at build time.
+Push portfolio updates to `main` to run the deployment automatically, or run **Deploy to GitHub Pages** manually from the **Actions** tab on `main`. The workflow installs locked dependencies with Node.js 24, lints, builds and publishes `dist/`. The build generates directory index files for direct links and refresh, plus a custom `404.html`.
+
+Build locally with the GitHub Pages base path `/personal-portfolio/` and preview the result:
 
 ```sh
 npm run build -- --base=/personal-portfolio/
+npm run preview -- --base=/personal-portfolio/
 ```
 
-The production origin is awaiting confirmation. Add the canonical and sharing image URLs once the deployment address and image are approved. Retain the existing route slugs for shared links.
+Ordinary local development with `npm run dev` uses the root path.
 
 ## Update content
 
