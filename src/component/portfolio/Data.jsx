@@ -1,39 +1,36 @@
-import { Link } from "react-router-dom";
-import data from "./datas";
+import projects from "./data.js";
+import ProjectCard from "./ProjectCard";
 
-const Data = () => {
-	return (
-		<div className="mx-8 lg:mx-52 relative">
-			<div className="text-sm lg:text-lg my-8 breadcrumbs">
-				<ul>
-					<li>
-						<Link to="/">Home</Link>
-					</li>
-					<li>
-						<Link to="/certificate">Certificates</Link>
-					</li>
-				</ul>
-			</div>
-			<div className="">
-				{data.map((item, index) => (
-					<div className="my-8 card lg:card-side bg-base-100 shadow-xl" key={index}>
-						<figure>
-							<img src={item.src} alt={item.name} className="w-full lg:w-96 lg:h-96" />
-						</figure>
-						<div className="card-body">
-							<h2 className="card-title">{item.name}</h2>
-							<p>{item.desc}</p>
-							<div className="card-actions justify-end">
-								<Link to={item.link} target="_blank" className="btn btn-primary">
-									View
-								</Link>
-							</div>
-						</div>
-					</div>
-				))}
-			</div>
-		</div>
-	);
-};
+const groups = [
+  {
+    title: "Recent projects",
+    id: "recent-projects",
+    items: projects.filter((project) => !project.legacy),
+  },
+  {
+    title: "Other projects",
+    id: "other-projects",
+    items: projects.filter((project) => project.legacy),
+  },
+];
 
-export default Data;
+function ProjectCollection() {
+  return (
+    <div className="space-y-10">
+      {groups.map(({ title, id, items }) => (
+        <section key={id} aria-labelledby={id}>
+          <h2 className="mb-4 text-2xl font-bold" id={id}>
+            {title}
+          </h2>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {items.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+export default ProjectCollection;

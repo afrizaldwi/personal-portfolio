@@ -1,55 +1,23 @@
-import { Element } from "react-scroll";
-import { FaHtml5 } from "react-icons/fa";
-import { FaCss3Alt } from "react-icons/fa";
-import { SiTailwindcss } from "react-icons/si";
-import { FaBootstrap } from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io5";
-import { FaReact } from "react-icons/fa";
+import skills from "../../../data/skills";
 
-const icon = [
-  {
-    name: "html",
-    icon: <FaHtml5 />,
-  },
-  {
-    name: "css",
-    icon: <FaCss3Alt />,
-  },
-  {
-    name: "tailwind",
-    icon: <SiTailwindcss />,
-  },
-  {
-    name: "bootstrap",
-    icon: <FaBootstrap />,
-  },
-  {
-    name: "javascript",
-    icon: <IoLogoJavascript />,
-  },
-  {
-    name: "react",
-    icon: <FaReact />,
-  },
-];
-
-const index = () => {
+function Skills() {
   return (
-    <Element name="skill" className="w-full bg-primary px-8 lg:px-52">
-      <h1 className="text-5xl font-bold text-center mt-20 py-8 capitalize">my skill</h1>
-      <div className="grid md:grid-cols-2 place-items-center gap-8 p-8 lg:grid-cols-3">
-        {icon.map((item, index) => (
-          <div
-            key={index}
-            className="text-xl capitalize gap-4 flex flex-col items-center lg:text-2xl"
-          >
-            <p className="text-5xl text-primary-content lg:text-7xl">{item.icon}</p>
-            <p>{item.name}</p>
+    <section id="skills" tabIndex={-1} className="section-shell" aria-labelledby="skills-heading">
+      <div className="section-heading">
+        <h2 id="skills-heading" className="section-title">Technical skills</h2>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {Object.entries(skills).map(([category, technologies]) => (
+          <div className="panel p-5" key={category}>
+            <h3 className="mb-3 font-bold">{category}</h3>
+            <ul className="flex flex-wrap gap-2">
+              {technologies.map((technology) => <li className="tag" key={technology}>{technology}</li>)}
+            </ul>
           </div>
         ))}
       </div>
-    </Element>
+    </section>
   );
-};
+}
 
-export default index;
+export default Skills;

@@ -1,3 +1,115 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --canvas: #f6f8fc;
+    --surface: #fff;
+    --line: #d6dfe9;
+    --muted: #485870;
+    --accent-ink: #234f9e;
+    --tint: #eaf1fd;
+  }
+
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --canvas: #101722;
+    --surface: #17212f;
+    --line: #344358;
+    --muted: #b7c5d7;
+    --accent-ink: #a7c9ff;
+    --tint: #1b2a40;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-base-content antialiased;
+  }
+
+  :where(a, button):focus-visible {
+    outline: 3px solid var(--accent-ink);
+    outline-offset: 3px;
+  }
+
+  section[id], #main-content {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@layer components {
+  .container-shell, .section-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12;
+  }
+
+  .section-shell { @apply py-8 sm:py-10 lg:py-12; }
+  .section-heading { @apply mb-5 sm:mb-7; }
+  .section-title { @apply text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl; }
+  .section-heading .eyebrow { @apply mb-2; }
+  .eyebrow { @apply text-sm font-semibold text-accent-ink; }
+  .panel { @apply rounded-xl border border-line bg-surface; }
+  .tag { @apply rounded-md border border-line bg-canvas px-2.5 py-1 text-sm leading-tight text-muted; }
+  .text-link { @apply text-accent-ink underline underline-offset-4; }
+
+  .site-header {
+    @apply sticky top-0 z-20 border-b border-line bg-surface;
+  }
+
+  .brand-mark {
+    @apply grid size-8 shrink-0 place-items-center rounded-md bg-primary text-sm text-primary-content;
+  }
+
+  .site-navigation {
+    @apply absolute inset-x-0 top-full flex-col gap-1 border-b border-line bg-surface p-3 md:static md:flex-row md:items-center md:border-0 md:p-0;
+  }
+
+  .nav-link {
+    @apply rounded-md px-2.5 py-2 text-sm font-semibold text-muted hover:bg-canvas hover:text-accent-ink;
+  }
+
+  .nav-link[aria-current] { @apply bg-tint text-accent-ink; }
+
+  .hero-layout {
+    @apply grid items-center gap-7 pb-10 pt-10 sm:gap-10 sm:pb-14 sm:pt-14 md:grid-cols-[minmax(0,1fr)_minmax(0,14rem)] lg:grid-cols-[minmax(0,1fr)_minmax(0,19rem)] xl:grid-cols-[minmax(0,1fr)_minmax(0,21rem)] lg:gap-14 lg:pb-16 lg:pt-20;
+  }
+
+  .hero-portrait {
+    @apply h-auto w-40 rounded-2xl border border-line bg-tint sm:w-56 md:w-full;
+  }
+
+  .project-cover {
+    color: var(--accent-ink);
+    background-color: var(--tint);
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-position: center;
+    background-size: 24px 24px;
+  }
+
+  .project-cover svg {
+    box-sizing: content-box;
+    @apply rounded-xl border border-line bg-surface p-4;
+  }
+
+  .skip-link {
+    @apply fixed left-4 top-3 z-50 -translate-y-20 rounded-md bg-primary px-4 py-2 text-primary-content focus:translate-y-0;
+  }
+
+  .certificate-dialog {
+    @apply fixed inset-0 m-0 h-full max-h-none w-full max-w-none overflow-hidden bg-black p-0 text-white;
+  }
+
+  .certificate-controls {
+    @apply fixed inset-x-0 top-0 z-[3000] bg-neutral px-3 py-2 text-neutral-content;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,21 +1,20 @@
-import { Element } from "react-scroll";
-import Text from "./Text";
-import person from "/images/person.png";
+import HeroText from "./Text";
+import profile from "../../../data/profile";
 
-const index = () => {
+function Hero() {
   return (
-    <Element
-      name="home"
-      className="w-full lg:h-screen flex px-8 lg:px-52 lg:flex-row flex-col justify-between items-center gap-8 mt-8 lg:mt-0 lg:gap-0"
-    >
-      <div className="lg:order-1 text-center lg:text-left order-2 w-full lg:w-auto">
-        <Text />
-      </div>
-      <div className="lg:order-2 relative">
-        <img src={person} alt="person" />
-      </div>
-    </Element>
+    <section id="home" tabIndex={-1} aria-label="Introduction" className="section-shell hero-layout">
+      <HeroText />
+      <img
+        src={import.meta.env.BASE_URL + "images/person.png"}
+        alt={`Portrait of ${profile.name}`}
+        width="349"
+        height="349"
+        loading="eager"
+        className="hero-portrait"
+      />
+    </section>
   );
-};
+}
 
-export default index;
+export default Hero;

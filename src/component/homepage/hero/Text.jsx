@@ -1,31 +1,32 @@
-import { useEffect, useRef } from "react";
-import Typed from "typed.js";
+import { Link } from "react-router-dom";
+import profile from "../../../data/profile";
 
-const Text = () => {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const typed = new Typed(ref.current, {
-      strings: ["welcome to my portfolio", "my name is", "afrizal dwi ahmad"],
-      smartBackspace: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 1000,
-      loop: true,
-      loopCount: Infinity,
-    });
-
-    return () => {
-      typed.destroy();
-    };
-  }, []);
+function HeroText() {
   return (
-    <>
-      <p className="lg:text-3xl text-xl">Hi, 👏</p>
-      <h1 className="lg:text-6xl text-2xl my-4 text-primary font-semibold">{"I'm Afrizal"}</h1>
-      <span ref={ref} className="capitalize lg:text-3xl text-xl" />
-    </>
+    <div>
+      <p className="eyebrow">{profile.role}</p>
+      <h1 className="mt-4 text-4xl font-extrabold leading-[1.04] tracking-[-0.045em] sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl">
+        {profile.name}
+      </h1>
+      <p className="mt-4 text-lg font-semibold text-accent-ink sm:text-2xl">
+        {profile.focus}
+      </p>
+      <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
+        {profile.introduction}
+      </p>
+      <div className="mt-7 flex flex-wrap gap-2 sm:gap-3">
+        <Link className="btn btn-primary" to="/#projects">
+          View Projects
+        </Link>
+        <a className="btn btn-outline" href={profile.github}>
+          GitHub
+        </a>
+        <Link className="btn btn-ghost" to="/#contact">
+          Contact Me
+        </Link>
+      </div>
+    </div>
   );
-};
+}
 
-export default Text;
+export default HeroText;

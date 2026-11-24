@@ -1,12 +1,7 @@
-import Data from "../component/certificates/Data";
-import ThemeContextProvider from "../contexts/ThemeContext";
+import CertificateCollection from "../component/certificates/Data";
 
-const Certificates = () => {
-	return (
-		<ThemeContextProvider>
-			<Data />
-		</ThemeContextProvider>
-	);
-};
+function Certificates() {
+  return <CertificateCollection />;
+}
 
 export default Certificates;

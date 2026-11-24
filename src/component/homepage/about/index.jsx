@@ -1,24 +1,27 @@
-import { Element } from "react-scroll";
-import Sosial from "./Sosial";
+import { FiBookOpen } from "react-icons/fi";
+import profile from "../../../data/profile";
 
-const index = () => {
-	return (
-		<Element
-			name="about"
-			className="w-full flex flex-col gap-8 px-8 lg:h-screen lg:justify-center lg:items-center lg:px-52">
-			<h1 className="text-5xl font-bold text-center mt-20 lg:m-0">About Me</h1>
-			<div className="lg:grid grid-rows-2 place-items-center gap-24">
-				<div className="flex flex-col gap-4">
-					<h2 className="text-secondary text-3xl capitalize font-semibold text-center">welcome</h2>
-					<p className="text-lg text-center lg:text-2xl">
-						Hi, my name is Afrizal Dwi Ahmad and i am a student of SMK Negeri 1 Cerme. I am 19 years
-						old. I created this website to showcase my skills.
-					</p>
-				</div>
-				<Sosial />
-			</div>
-		</Element>
-	);
-};
+function About() {
+  return (
+    <section id="about" tabIndex={-1} className="section-shell" aria-labelledby="about-heading">
+      <div className="grid gap-7 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
+        <div>
+          <h2 id="about-heading" className="section-title">About me</h2>
+          <div className="mt-4 space-y-3 text-muted">
+            {profile.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </div>
+        </div>
+        <div className="panel flex items-start gap-4 self-start p-6">
+          <FiBookOpen className="mt-1 size-6 shrink-0 text-accent-ink" aria-hidden="true" />
+          <div>
+            <h3 className="eyebrow">Education</h3>
+            <p className="mt-2 text-lg font-bold">{profile.university}</p>
+            <p className="mt-1 text-muted">{profile.program} · {profile.educationLevel}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-export default index;
+export default About;

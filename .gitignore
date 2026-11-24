@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local verification and implementation records
+/scripts/verification/
+/docs/portfolio-update/

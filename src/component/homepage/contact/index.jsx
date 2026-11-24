@@ -1,34 +1,45 @@
-import { Element } from "react-scroll";
-import person from "/images/person 2.jpg";
-import { Link } from "react-router-dom";
-import { FaWhatsapp } from "react-icons/fa";
-import { MdOutlineMail } from "react-icons/md";
+import { FiGithub, FiInstagram, FiLinkedin } from "react-icons/fi";
+import profile from "../../../data/profile";
 
-const index = () => {
-  const whatsappLink = "https://wa.me/6281917052146";
-  const mailLink = "mailto:afrizaldwiariz@egmail.com";
-
+function Contact() {
   return (
-    <Element name="contact" className="w-full px-8 py-12 lg:px-52">
-      <h1 className="text-5xl font-bold text-center mt-20 py-12 capitalize">contact me</h1>
-      <div className="grid lg:grid-cols-2 gap-8">
-        <div className="w-full flex justify-center">
-          <img src={person} alt="person" className="lg:w-2/3 rounded-lg" />
+    <section
+      id="contact"
+      tabIndex={-1}
+      className="section-shell"
+      aria-labelledby="contact-heading"
+    >
+      <div className="panel flex flex-wrap items-center justify-between gap-5 p-6 sm:p-8">
+        <div>
+          <h2 id="contact-heading" className="section-title">
+            Contact
+          </h2>
+          <p className="mt-2 text-muted">
+            Find my work and connect with me online.
+          </p>
         </div>
-        <div className="flex flex-col gap-4">
-          <p className="text-3xl capitalize">Feel free to contact me</p>
-          <div className="flex gap-4">
-            <Link to={whatsappLink} target="_blank">
-              <FaWhatsapp className="text-3xl lg:text-6xl" />
-            </Link>
-            <Link to={mailLink} target="_blank">
-              <MdOutlineMail className="text-3xl lg:text-6xl" />
-            </Link>
-          </div>
+        <div className="flex flex-wrap gap-2">
+          <a className="btn btn-primary" href={profile.github} target="_blank" rel="noreferrer">
+            <FiGithub aria-hidden="true" /> GitHub profile
+          </a>
+          <a
+            className="btn btn-outline"
+            href={profile.instagram}
+            target="_blank" rel="noreferrer"
+          >
+            <FiInstagram aria-hidden="true" /> Instagram
+          </a>
+          <a
+            className="btn btn-outline"
+            href={profile.linkedin}
+            target="_blank" rel="noreferrer"
+          >
+            <FiLinkedin aria-hidden="true" /> LinkedIn
+          </a>
         </div>
       </div>
-    </Element>
+    </section>
   );
-};
+}
 
-export default index;
+export default Contact;
