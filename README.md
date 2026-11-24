@@ -18,7 +18,7 @@ In PowerShell, use `npm.cmd` for these commands.
 
 ## GitHub Pages deployment
 
-The deployment target is [afrizaldwi.github.io/personal-portfolio/](https://afrizaldwi.github.io/personal-portfolio/). In the repository's **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**.
+The portfolio is live at [afrizaldwi.github.io/personal-portfolio/](https://afrizaldwi.github.io/personal-portfolio/). The repository uses **GitHub Actions** as its Pages publishing source.
 
 Push portfolio updates to `main` to run the deployment automatically, or run **Deploy to GitHub Pages** manually from the **Actions** tab on `main`. The workflow installs locked dependencies with Node.js 24, lints, builds and publishes `dist/`. The build generates directory index files for direct links and refresh, plus a custom `404.html`.
 
@@ -30,6 +30,7 @@ npm run preview -- --base=/personal-portfolio/
 ```
 
 Ordinary local development with `npm run dev` uses the root path.
+The deployment workflow supplies the Pages URL for route-specific canonical and Open Graph tags. To include these tags in a local production build, set `VITE_SITE_URL` to the deployed site URL before building.
 
 ## Update content
 

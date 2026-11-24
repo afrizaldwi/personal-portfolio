@@ -33,3 +33,9 @@ const pageMetadata = {
 };
 
 export default pageMetadata;
+
+export function getPageUrl(siteUrl, path) {
+  if (!siteUrl || !Object.hasOwn(pageMetadata, path)) return null;
+  const base = siteUrl.replace(/\/+$/, "") + "/";
+  return path === "/" ? base : base + path.slice(1) + "/";
+}

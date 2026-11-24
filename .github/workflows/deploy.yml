@@ -32,10 +32,13 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
-      - name: Build
-        run: npm run build -- --base=/personal-portfolio/
       - name: Configure GitHub Pages
+        id: pages
         uses: actions/configure-pages@v6
+      - name: Build
+        env:
+          VITE_SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: npm run build -- --base=/personal-portfolio/
       - name: Upload site
         uses: actions/upload-pages-artifact@v5
         with:
